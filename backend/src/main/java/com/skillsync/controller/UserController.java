@@ -42,4 +42,8 @@ public class UserController {
 
         return "Invalid Credentials";
     }
+    @GetMapping("/profile")
+    public String profile() {
+        return "Welcome to SkillSync Profile";
+    }
 }
