@@ -29,4 +29,16 @@ public class JwtUtil {
                 .signWith(SECRET_KEY)
                 .compact();
     }
+    public String extractUsername(String token) {
+        return Jwts.parser()
+                .setSigningKey(SECRET_KEY)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload()
+                .getSubject();
+    }
+
+    public boolean validateToken(String token, String email) {
+        return extractUsername(token).equals(email);
+    }
 }
