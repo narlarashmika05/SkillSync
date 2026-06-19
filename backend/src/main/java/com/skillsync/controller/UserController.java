@@ -1,5 +1,5 @@
 package com.skillsync.controller;
-
+import org.springframework.security.crypto.password.PasswordEncoder;
 import com.skillsync.entity.LoginRequest;
 import com.skillsync.entity.User;
 import com.skillsync.security.JwtUtil;
@@ -19,7 +19,8 @@ public class UserController {
 
     @Autowired
     private JwtUtil jwtUtil;
-
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @PostMapping("/register")
     public User registerUser(@RequestBody User user) {
         return userService.registerUser(user);
@@ -32,8 +33,10 @@ public class UserController {
                 userService.findByEmail(loginRequest.getEmail());
 
         if (user.isPresent() &&
-                user.get().getPassword()
-                        .equals(loginRequest.getPassword())) {
+                passwordEncoder.matches(
+                        loginRequest.getPassword(),
+                        user.get().getPassword()
+                )) {
 
             return jwtUtil.generateToken(
                     loginRequest.getEmail()
