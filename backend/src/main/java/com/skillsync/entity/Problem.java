@@ -16,7 +16,7 @@ public class Problem {
     private String topic;
     private String difficulty;
     private String status;
-
+    private String userEmail;
     public Problem() {
     }
 
@@ -34,6 +34,9 @@ public class Problem {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getTopic() {
@@ -58,5 +61,8 @@ public class Problem {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+    public String getUserEmail() {
+        return userEmail;
     }
 }

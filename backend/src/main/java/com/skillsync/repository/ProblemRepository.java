@@ -9,4 +9,5 @@ public interface ProblemRepository
         extends JpaRepository<Problem, Long> {
 
     List<Problem> findByTopic(String topic);
+    List<Problem> findByUserEmail(String userEmail);
 }

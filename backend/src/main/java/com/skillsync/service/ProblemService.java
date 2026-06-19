@@ -61,4 +61,10 @@ public class ProblemService {
 
         return stats;
     }
+    public List<Problem> getProblemsByUserEmail(
+            String userEmail) {
+
+        return problemRepository.findByUserEmail(userEmail);
+    }
+
 }

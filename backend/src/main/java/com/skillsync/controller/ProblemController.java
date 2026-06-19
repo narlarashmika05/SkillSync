@@ -42,4 +42,10 @@ public class ProblemController {
     public ProblemStats getStats() {
         return problemService.getStats();
     }
+    @GetMapping("/user/{email}")
+    public List<Problem> getProblemsByUserEmail(
+            @PathVariable String email) {
+
+        return problemService.getProblemsByUserEmail(email);
+    }
 }
