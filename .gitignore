@@ -1,0 +1,13 @@
+# Secrets (copy Backend/backend/.env.example to .env)
+.env
+
+# IDE / tooling
+.idea/
+.vscode/
+.claude/
+
+# Build output
+target/
+node_modules/
+dist/
+*.log
